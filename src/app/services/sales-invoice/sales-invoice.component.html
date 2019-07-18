@@ -15,7 +15,7 @@
                     <div class="control nudge-small">
                         <label> Item </label>
                         <select [(ngModel)]="salesInvoiceItem.item_id" (change)="setSelectedItem()">
-                            <option *ngFor="let item of items" [ngValue]="item.id">{{item.name}}</option>>
+                            <option *ngFor="let item of items" [ngValue]="item.id">{{item.name}} ({{item.brand}})</option>>
                         </select>
                     </div>
                     <div class="control nudge-small">
