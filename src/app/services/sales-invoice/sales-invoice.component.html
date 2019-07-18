@@ -1,0 +1,131 @@
+<h1>SALES INVOICE</h1>
+<div class="crud" *ngIf="dependenciesLoaded">
+    <div class="editor">
+        <div class="nudge nudge-down">
+            <div class="control-group nudge-down">
+                <div class="control">
+                    <label> Customer </label>
+                    <select [(ngModel)]="salesInvoice.customer_id">
+                        <option *ngFor="let customer of customers" [ngValue]="customer.id">{{customer.first_name}} {{customer.middle_name}} {{customer.last_name}}</option>>
+                    </select>
+                </div>
+            </div>
+            <ng-container *ngIf="salesInvoice.customer_id">
+                <div class="control-group-flex">
+                    <div class="control nudge-small">
+                        <label> Item </label>
+                        <select [(ngModel)]="salesInvoiceItem.item_id" (change)="setSelectedItem()">
+                            <option *ngFor="let item of items" [ngValue]="item.id">{{item.name}}</option>>
+                        </select>
+                    </div>
+                    <div class="control nudge-small">
+                        <label> Quantity </label>
+                        <input type="text" [(ngModel)]="salesInvoiceItem.qty">
+                    </div>
+                    <div class="control">
+                        <button [disabled]="!salesInvoiceItem.item_id || !salesInvoiceItem.qty || salesInvoiceItem.qty <= 0" (click)="addSalesInvoiceItems()">Add Items</button>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="control">
+                        <div class="grid-display">
+                                <table class="table-grid-display">
+                                    <thead>
+                                        <tr>
+                                            <td>
+                                                NAME
+                                            </td>
+                                            <td>
+                                                QUANTITY
+                                            </td>
+                                            <td>
+                                                SELL PRICE
+                                            </td>
+                                            <td>
+                                                TOTAL PRICE
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let salesInvoiceItem of salesInvoiceItems">
+                                            <td>{{salesInvoiceItem.item.name}}</td>
+                                            <td>{{salesInvoiceItem.qty}}</td>
+                                            <td>{{salesInvoiceItem.item.sell_price}}</td>
+                                            <td>{{salesInvoiceItem.item.sell_price * salesInvoiceItem.qty}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="control">
+                        <label> Notes </label>
+                        <textarea [(ngModel)]="salesInvoice.notes"></textarea>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="buttons">
+            <button [disabled]="!salesInvoiceItems.length" (click)="saveSalesInvoice()">Save</button>
+        </div>
+    </div>
+
+    <div class="grid-display">
+        <div class="grid-search">
+            <h5>Search by</h5>
+            <div class="grid-search-fields">
+                <div class="control-group">
+                    <div class="control">
+                        <label> Customer </label>
+                        <select [(ngModel)]="filterArr.customer_id" (change)="setFilter('customer_id')">
+                            <option *ngFor="let customer of customers" [ngValue]="customer.id">{{customer.first_name}} {{customer.middle_name}} {{customer.last_name}}</option>>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table-grid-display">
+            <thead>
+                <tr>
+                    <td>
+                        CREATED DATE
+                    </td>
+                    <td>
+                        FIRST NAME
+                    </td>
+                    <td>
+                        MIDDLE NAME
+                    </td>
+                    <td>
+                        LAST NAME
+                    </td>
+                    <td>
+                        AMOUNT
+                    </td>
+                    <td>
+                        AMOUNT PAID
+                    </td>
+                    <td>
+                        NOTES
+                    </td>
+                    <td>
+                        STATUS
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let salesInvoice of salesInvoices">
+                    <td>{{salesInvoice.created_date | date:'MM/dd/yyyy'}}</td>
+                    <td>{{salesInvoice.customer.first_name}}</td>
+                    <td>{{salesInvoice.customer.middle_name}}</td>
+                    <td>{{salesInvoice.customer.last_name}}</td>
+                    <td>{{salesInvoice.amount}}</td>
+                    <td>{{salesInvoice.amount_paid}}</td>
+                    <td>{{salesInvoice.notes}}</td>
+                    <td>{{getStatus(salesInvoice)}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<h1>ITEM TYPES</h1>
+<div class="crud" *ngIf="dependenciesLoaded">
+        <div class="editor">
+            <div class="nudge nudge-down">
+                <div class="control-group">
+                    <div class="control">
+                        <label> Name </label>
+                        <input type="text" [(ngModel)]="itemType.name">
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button (click)="saveItemType()">Save</button>
+            </div>
+        </div>
+    
+        <div class="grid-display">
+            <table class="table-grid-display">
+                <thead>
+                    <tr>
+                        <td>
+                            NAME
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let itemType of itemTypes">
+                        <td>{{itemType.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

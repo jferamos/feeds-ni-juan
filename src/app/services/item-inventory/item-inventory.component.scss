@@ -1,0 +1,53 @@
+.crud{
+    display:inline-flex;
+    padding-top: 50px;
+}
+.editor{
+    .nudge{
+        padding-right: 50px;
+    }
+
+    .nudge-down{
+        padding-bottom: 50px;
+    }
+
+    .buttons{
+        text-align: center;
+        button{
+            width: 200px;
+        }
+    }
+
+    .control-group{
+        .control{
+            display: inline-grid;
+            padding-bottom: 20px;
+        }
+        .control > label{
+            padding-left: 10px;
+            font-size: small;
+            font-weight: bold;
+        }
+
+        .control{
+            input, select, textarea {
+                margin-left: 10px;
+                width: 400px;
+            }
+        }
+    }
+}
+
+.grid-display{
+    .table-grid-display { 
+        thead {
+            font-weight: bold;
+        }
+        thead, tbody {
+            tr > td{
+                border: 2px solid #dbdbdb;
+                padding: 5px 8px;
+            }
+        }
+    }
+}

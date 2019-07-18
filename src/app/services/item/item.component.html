@@ -1,0 +1,102 @@
+<h1>ITEMS</h1>
+<div class="crud" *ngIf="dependenciesLoaded">
+    <div class="editor">
+        <div class="nudge nudge-down">
+            <div class="control-group">
+                <div class="control">
+                    <label> Name </label>
+                    <input type="text" [(ngModel)]="item.name">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Brand </label>
+                    <input type="text" [(ngModel)]="item.brand">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Type </label>
+                    <select [(ngModel)]="item.type">
+                        <option *ngFor="let itemType of itemTypes" [ngValue]="itemType.id">{{itemType.name}}</option>>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Order Quantity </label>
+                    <input type="text" [(ngModel)]="item.order_qty">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Purchase Price </label>
+                    <input type="text" [(ngModel)]="item.purchase_price">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Sell Price </label>
+                    <input type="text" [(ngModel)]="item.sell_price">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Status </label>
+                    <select [(ngModel)]="item.status">
+                        <option value="1">Active</option>
+                        <option value="2">Inactive</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button (click)="saveItem()">Save</button>
+        </div>
+    </div>
+
+    <div class="grid-display">
+        <table class="table-grid-display">
+            <thead>
+                <tr>
+                    <td>
+                        NAME
+                    </td>
+                    <td>
+                        BRAND
+                    </td>
+                    <td>
+                        TYPE
+                    </td>
+                    <td>
+                        REMAINING QUANTITY
+                    </td>
+                    <td>
+                        ORDER QUANTITY
+                    </td>
+                    <td>
+                        PURCHASE PRICE
+                    </td>
+                    <td>
+                        SELL PRICE
+                    </td>
+                    <td>
+                        STATUS
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.brand}}</td>
+                    <td>{{item.item_type.name}}</td>
+                    <td>{{item.qty}}</td>
+                    <td>{{item.order_qty}}</td>
+                    <td>{{item.purchase_price}}</td>
+                    <td>{{item.sell_price}}</td>
+                    <td>{{item.status == 1 ? 'Active' : 'Inactive'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

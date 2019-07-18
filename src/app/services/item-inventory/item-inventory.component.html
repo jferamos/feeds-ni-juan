@@ -1,0 +1,79 @@
+<h1>ITEM INVENTORY</h1>
+<div class="crud" *ngIf="dependenciesLoaded">
+        <div class="editor">
+            <div class="nudge nudge-down">
+                <div class="control-group">
+                    <div class="control">
+                        <label> Item </label>
+                        <select [(ngModel)]="itemInventory.item_id">
+                            <option *ngFor="let item of items" [ngValue]="item.id">{{item.name}}</option>>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="control">
+                        <label> Quantity </label>
+                        <input type="text" [(ngModel)]="itemInventory.qty">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="control">
+                        <label> Delivered By </label>
+                        <input type="text" [(ngModel)]="itemInventory.delivered_by">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="control">
+                        <label> Received By </label>
+                        <input type="text" [(ngModel)]="itemInventory.received_by">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="control">
+                        <label> Notes </label>
+                        <textarea [(ngModel)]="itemInventory.notes"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button (click)="saveItemInventory()">Save</button>
+            </div>
+        </div>
+    
+        <div class="grid-display">
+            <table class="table-grid-display">
+                <thead>
+                    <tr>
+                        <td>
+                            CREATED DATE
+                        </td>
+                        <td>
+                            ITEM
+                        </td>
+                        <td>
+                            QUANTITY
+                        </td>
+                        <td>
+                            DELIVERED BY
+                        </td>
+                        <td>
+                            RECEIVED BY
+                        </td>
+                        <td>
+                            NOTES
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let itemInventory of itemInventories">
+                        <td>{{itemInventory.created_date  | date:'MM/dd/yyyy'}}</td>
+                        <td>{{itemInventory.item.name}}</td>
+                        <td>{{itemInventory.qty}}</td>
+                        <td>{{itemInventory.delivered_by}}</td>
+                        <td>{{itemInventory.received_by}}</td>
+                        <td>{{itemInventory.notes}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

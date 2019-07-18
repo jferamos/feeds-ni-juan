@@ -1,0 +1,90 @@
+<h1>CUSTOMERS</h1>
+<div class="crud" *ngIf="dependenciesLoaded">
+    <div class="editor">
+        <div class="nudge nudge-down">
+            <div class="control-group">
+                <div class="control">
+                    <label> First Name </label>
+                    <input type="text" [(ngModel)]="customer.first_name">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Middle Name </label>
+                    <input type="text" [(ngModel)]="customer.middle_name">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Last Name </label>
+                    <input type="text" [(ngModel)]="customer.last_name">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Address </label>
+                    <input type="text" [(ngModel)]="customer.address">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Contact Number </label>
+                    <input type="text" [(ngModel)]="customer.contact_number">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Status </label>
+                    <select [(ngModel)]="customer.status">
+                        <option value="1">Active</option>
+                        <option value="2">Inactive</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button (click)="saveCustomer()">Save</button>
+        </div>
+    </div>
+
+    <div class="grid-display">
+        <table class="table-grid-display">
+            <thead>
+                <tr>
+                    <td>
+                        FIRST NAME
+                    </td>
+                    <td>
+                        MIDDLE NAME
+                    </td>
+                    <td>
+                        LAST NAME
+                    </td>
+                    <td>
+                        ADDRESS
+                    </td>
+                    <td>
+                        CONTANCT NUMBER
+                    </td>
+                    <td>
+                        STATUS
+                    </td>
+                    <td>
+                        CREATED DATE
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customers">
+                    <td>{{customer.first_name}}</td>
+                    <td>{{customer.middle_name}}</td>
+                    <td>{{customer.last_name}}</td>
+                    <td>{{customer.address}}</td>
+                    <td>{{customer.contact_number}}</td>
+                    <td>{{customer.status == 1 ? 'Active' : 'Inactive'}}</td>
+                    <td>{{customer.created_date | date:'MM/dd/yyyy'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

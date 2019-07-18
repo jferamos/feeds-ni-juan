@@ -1,0 +1,75 @@
+<h1>SALES PAYMENTS</h1>
+<div class="crud" *ngIf="dependenciesLoaded">
+    <div class="editor">
+        <div class="nudge nudge-down">
+            <div class="control-group">
+                <div class="control">
+                    <label> Customer </label>
+                    <select [(ngModel)]="salesPayment.customer_id" (change)="setCustomer()">
+                        <option *ngFor="let customer of customers" [ngValue]="customer.id">{{customer.first_name}} {{customer.middle_name}} {{customer.last_name}}</option>>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group" *ngIf="salesPayment.customer">
+                <div class="control">
+                    <label> Sales Invoice </label>
+                    <select [(ngModel)]="salesPayment.sales_invoice_id">
+                        <option *ngFor="let salesInvoice of salesPayment.customer.sales_invoices" [ngValue]="salesInvoice.id">{{salesInvoice.created_date | date:'M/d/yy, h:mm a'}} -- {{(salesInvoice.amount - salesInvoice.amount_paid) | currency:'PHP'}}</option>>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group" *ngIf="salesPayment.sales_invoice_id">
+                <div class="control nudge">
+                    <label> Amount </label>
+                    <input type="text" [(ngModel)]="salesPayment.amount">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="control">
+                    <label> Notes </label>
+                    <textarea [(ngModel)]="salesPayment.notes"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button (click)="saveSalesPayment()">Save</button>
+        </div>
+    </div>
+
+    <div class="grid-display">
+        <table class="table-grid-display">
+            <thead>
+                <tr>
+                    <td>
+                        CREATED DATE
+                    </td>
+                    <td>
+                        FIRST NAME
+                    </td>
+                    <td>
+                        MIDDLE NAME
+                    </td>
+                    <td>
+                        LAST NAME
+                    </td>
+                    <td>
+                        AMOUNT
+                    </td>
+                    <td>
+                        NOTES
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let salesPayment of salesPayments">
+                    <td>{{salesPayment.created_date | date:'MM/dd/yyyy'}}</td>
+                    <td>{{salesPayment.sales_invoice.customer.first_name}}</td>
+                    <td>{{salesPayment.sales_invoice.customer.middle_name}}</td>
+                    <td>{{salesPayment.sales_invoice.customer.last_name}}</td>
+                    <td>{{salesPayment.amount}}</td>
+                    <td>{{salesPayment.notes}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
