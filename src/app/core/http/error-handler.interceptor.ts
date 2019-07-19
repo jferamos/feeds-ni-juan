@@ -21,7 +21,6 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
   constructor(private credentialsService:CredentialsService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(this.credentialsService.credentials)
     if(this.credentialsService.credentials) {
       request = request.clone({
         setHeaders: {
@@ -29,9 +28,6 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
         }
       });
     }
-      
-    console.log(request.headers);
-
     return next.handle(request).pipe(catchError(error => this.errorHandler(error)));
   }
 

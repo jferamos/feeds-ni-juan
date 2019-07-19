@@ -42,7 +42,6 @@ export class SalesPaymentComponent implements OnInit {
       sales_invoice_id: this.salesPayment.sales_invoice_id
     }
 
-    console.log(salesPayment);
     this.salesPayment = await this.salesPaymentRepo.saveSalesPayment(salesPayment);
     await this.fetchSalesPayments();
     await this.fetchCustomers();
