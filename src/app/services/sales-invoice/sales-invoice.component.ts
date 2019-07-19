@@ -39,6 +39,7 @@ export class SalesInvoiceComponent implements OnInit {
 
   async fetchSalesInvoices(){
     this.salesInvoice = {};
+    this.salesInvoiceItems = [];
     const data:any = await this.salesInvoiceRepo.getAllSalesInvoices();
     this.salesInvoices = data.data.sales_invoice;
   }
