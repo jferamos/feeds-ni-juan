@@ -49,10 +49,8 @@ export class SalesPaymentComponent implements OnInit {
   }
 
   setCustomer(){
-    console.log(this.salesPayment.customer);
     this.salesPayment.customer = this.customers.find(x=>{
       return x.id == this.salesPayment.customer_id;
     })
-    console.log(this.salesPayment.customer);
   }
 }

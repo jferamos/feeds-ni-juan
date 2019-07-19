@@ -75,13 +75,16 @@
         <div class="grid-search">
             <h5>Search by</h5>
             <div class="grid-search-fields">
-                <div class="control-group">
+                <div class="control-group nudge-small">
                     <div class="control">
                         <label> Customer </label>
                         <select [(ngModel)]="filterArr.customer_id" (change)="setFilter('customer_id')">
                             <option *ngFor="let customer of customers" [ngValue]="customer.id">{{customer.first_name}} {{customer.middle_name}} {{customer.last_name}}</option>>
                         </select>
                     </div>
+                </div>
+                <div>
+                    <button (click)="clearSearch()">Clear</button>
                 </div>
             </div>
         </div>

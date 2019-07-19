@@ -104,4 +104,9 @@ export class SalesInvoiceComponent implements OnInit {
     const data:any = await this.salesInvoiceRepo.getFilteredSalesInvoices(stringified);
     this.salesInvoices = data.data.sales_invoice;
   }
+
+  clearSearch(){
+    this.filterArr = {};
+    this.setFilter();    
+  }
 }
