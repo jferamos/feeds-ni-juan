@@ -50,8 +50,8 @@
                                         <tr *ngFor="let salesInvoiceItem of salesInvoiceItems">
                                             <td>{{salesInvoiceItem.item.name}}</td>
                                             <td>{{salesInvoiceItem.qty}}</td>
-                                            <td>{{salesInvoiceItem.item.sell_price}}</td>
-                                            <td>{{salesInvoiceItem.item.sell_price * salesInvoiceItem.qty}}</td>
+                                            <td>{{salesInvoiceItem.item.sell_price | currency:'PHP '}}</td>
+                                            <td>{{(salesInvoiceItem.item.sell_price * salesInvoiceItem.qty)  | currency:'PHP '}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -120,8 +120,8 @@
                     <td>{{salesInvoice.customer.first_name}}</td>
                     <td>{{salesInvoice.customer.middle_name}}</td>
                     <td>{{salesInvoice.customer.last_name}}</td>
-                    <td>{{salesInvoice.amount}}</td>
-                    <td>{{salesInvoice.amount_paid}}</td>
+                    <td>{{salesInvoice.amount | currency:'PHP '}}</td>
+                    <td>{{salesInvoice.amount_paid | currency:'PHP '}}</td>
                     <td>{{salesInvoice.notes}}</td>
                     <td>{{getStatus(salesInvoice)}}</td>
                 </tr>

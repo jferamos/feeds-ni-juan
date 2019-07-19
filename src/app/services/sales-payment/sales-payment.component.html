@@ -66,7 +66,7 @@
                     <td>{{salesPayment.sales_invoice.customer.first_name}}</td>
                     <td>{{salesPayment.sales_invoice.customer.middle_name}}</td>
                     <td>{{salesPayment.sales_invoice.customer.last_name}}</td>
-                    <td>{{salesPayment.amount}}</td>
+                    <td>{{salesPayment.amount | currency:'PHP '}}</td>
                     <td>{{salesPayment.notes}}</td>
                 </tr>
             </tbody>
