@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@angular/animations": "^8.1.0",
-    "@angular/cli": "^8.1.2",
+    "@angular/cli": "^16.0.0",
     "@angular/common": "^8.1.0",
     "@angular/compiler": "^8.1.0",
     "@angular/compiler-cli": "^8.1.2",
@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.801.0",
-    "@angular/cli": "^8.1.2",
+    "@angular/cli": "^16.0.0",
     "@angular/compiler-cli": "^8.1.2",
     "@angular/language-service": "^8.1.0",
     "@angularclass/hmr": "^2.1.3",
